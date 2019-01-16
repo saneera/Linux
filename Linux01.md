@@ -53,6 +53,7 @@ lspci is a command on Unix-like operating systems that prints ("lists") detaile
 Eg:
 
 lspci
+
 00:00.0 Host bridge: Intel Corporation 4th Gen Core Processor DRAM Controller (rev 06)
 00:01.0 PCI bridge: Intel Corporation Xeon E3-1200 v3/4th Gen Core Processor PCI Express x16 Controller (rev 06)
 00:02.0 VGA compatible controller: Intel Corporation Xeon E3-1200 v3/4th Gen Core Processor Integrated Graphics Controller (rev 06)
@@ -75,6 +76,7 @@ lspci
 lsusb is a command on display information on USB device attached.
 
 lsusb
+
 Bus 002 Device 002: ID 8087:8000 Intel Corp.
 Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 Bus 001 Device 002: ID 8087:8008 Intel Corp.
@@ -118,13 +120,16 @@ Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca 
 lsblk is a comand display onfomation on all block devices on a system.
 
  lsblk
+ 
 NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 sda      8:0    0 111.8G  0 disk
 ├─sda1   8:1    0 103.9G  0 part /
 ├─sda2   8:2    0     1K  0 part
 └─sda5   8:5    0   7.9G  0 part [SWAP]
 
+
 lsblk -f
+
 NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
 sda
 ├─sda1 ext4         c601ee2b-6f25-41ab-80f2-25550f9ebaa8 /
