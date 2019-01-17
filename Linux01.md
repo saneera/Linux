@@ -1,57 +1,60 @@
-Pseudo File System
+#Pseudo File System
 
-Everything in Linux is a file 
+###Everything in Linux is a file 
 
-/proc/
+* **/proc/**
+
 Process running in the system
 
-/sys
+* **/sys**
+
 System hardware and kernel module , no process information listed here 
 
-man proc
+* **man proc**
+
 How local documentation on the /proc pseudo file system
 
 
-Kernel command
+###Kernel command
 
-Uname
-Linux
+* **Uname**
 
-uname -m
-x86_64
+    Linux
 
- uname -rm
-4.4.0-134-generic x86_64
+* **uname -m**
 
+    x86_64
 
-uname -a
-Linux dcloud 4.4.0-134-generic #160-Ubuntu SMP Wed Aug 15 14:58:00 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+* **uname -rm**
 
+    4.4.0-134-generic x86_64
 
-lsmod
-It shows which loadable kernel modules are currently loaded
+* **uname -a**
 
-modinfo
-Display information about specific kernel module
-Eg: modinfo floppy
+    Linux dcloud 4.4.0-134-generic #160-Ubuntu SMP Wed Aug 15 14:58:00 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
 
-modprobe
-Dynamically load and unload kernel module 
-Eg: modprobe -r floppy
-      modprobe floppy
+* **lsmod**
 
+    It shows which loadable kernel modules are currently loaded
 
-Investigating Hardware
+* **modinfo**
 
-Linux device management
+	Display information about specific kernel module
+	Eg: modinfo floppy
 
-Udev(device manager)            lsblk
+* **modprobe**
 
-lspci is a command on Unix-like operating systems that prints ("lists") detailed information about all PCI buses and devices in the system.
+	Dynamically load and unload kernel module 
+	
+	Eg: modprobe -r floppy
+	      modprobe floppy
+	  
 
+* **lspci**
 
-Eg:
+is a command on Unix-like operating systems that prints ("lists") detailed information about all PCI buses and devices in the system.
 
+```
 lspci
 00:00.0 Host bridge: Intel Corporation 4th Gen Core Processor DRAM Controller (rev 06)
 00:01.0 PCI bridge: Intel Corporation Xeon E3-1200 v3/4th Gen Core Processor PCI Express x16 Controller (rev 06)
@@ -69,11 +72,13 @@ lspci
 00:1f.2 SATA controller: Intel Corporation 8 Series/C220 Series Chipset Family 6-port SATA Controller 1 [AHCI mode] (rev 05)
 00:1f.3 SMBus: Intel Corporation 8 Series/C220 Series Chipset Family SMBus Controller (rev 05)
 03:00.0 PCI bridge: ASMedia Technology Inc. ASM1083/1085 PCIe to PCI Bridge (rev 04)
+```
 
 
+* **lsusb**
+ is a command on display information on USB device attached.
 
-lsusb is a command on display information on USB device attached.
-
+```
 lsusb
 Bus 002 Device 002: ID 8087:8000 Intel Corp.
 Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
@@ -83,10 +88,12 @@ Bus 004 Device 002: ID 174c:3074 ASMedia Technology Inc. ASM1074 SuperSpeed hub
 Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
 Bus 003 Device 002: ID 174c:2074 ASMedia Technology Inc. ASM1074 High-Speed hub
 Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+```
 
+* **lscpu** 
+  is a command on display information on processors a system.
 
-lscpu is a command on display information on processors a system.
-
+```
 lscpu
 Architecture:          x86_64
 CPU op-mode(s):        32-bit, 64-bit
@@ -113,22 +120,23 @@ L2 cache:              256K
 L3 cache:              6144K
 NUMA node0 CPU(s):     0-3
 Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm epb invpcid_single ssbd ibrs ibpb stibp kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid xsaveopt dtherm ida arat pln pts flush_l1d
+```
+
+* **lsblk**
+is a comand display onfomation on all block devices on a system.
 
 
-lsblk is a comand display onfomation on all block devices on a system.
+```
+lsblk
+NAME    MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+xvda    202:0    0  20G  0 disk
+└─xvda1 202:1    0  20G  0 part /
 
- lsblk
-NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-sda      8:0    0 111.8G  0 disk
-├─sda1   8:1    0 103.9G  0 part /
-├─sda2   8:2    0     1K  0 part
-└─sda5   8:5    0   7.9G  0 part [SWAP]
-
+```
+```
 lsblk -f
-NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
-sda
-├─sda1 ext4         c601ee2b-6f25-41ab-80f2-25550f9ebaa8 /
-├─sda2
-└─sda5 swap         2649a901-3b8e-4014-b093-bca795b69169 [SWAP]
-
+NAME    FSTYPE LABEL           UUID                                 MOUNTPOINT
+xvda
+└─xvda1 ext4   cloudimg-rootfs 4573eb39-57f3-439b-9a73-8aef508afd3f /
+```
 
